@@ -24,23 +24,31 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            min-height: 100vh;
+            /* Adjusted padding for balanced spacing */
+            padding: 3rem 0;
+            min-height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
         }
-        /* برای دستگاه‌های کوچک‌تر (موبایل) */
+        /* For mobile devices */
         @media (max-width: 640px) {
             .hero {
-                background-position: top center;
-                min-height: 80vh;
+                padding: 2rem 0;
+                background-position: center;
+                min-height: auto;
             }
         }
-        /* برای تبلت‌ها */
+        /* For tablets */
         @media (min-width: 641px) and (max-width: 1024px) {
             .hero {
+                padding: 2.5rem 0;
                 background-position: center;
-                min-height: 90vh;
+                min-height: auto;
             }
         }
-        /* بهینه‌سازی برای نمایشگرهای با رزولوشن بالا */
+        /* For high-resolution displays */
         @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
             .hero {
                 background-image: url('./back.jpg');
@@ -213,10 +221,10 @@
 </head>
 <body class="bg-gray-50">
     <!-- Hero Section -->
-    <section id="home" class="hero min-h-screen flex items-start justify-center text-white  text-white relative">
+    <section id="home" class="hero flex items-start justify-center text-white relative">
         <div class="absolute inset-0 bg-black opacity-70 z-10"></div>
         <div class="container mx-auto px-4 pt-0 relative z-20">
-            <div class="text-center mt-28 hero-content">
+            <div class="text-center mt-8 pb-8 hero-content">
                 <h1 class="text-3xl sm:text-4xl lg:text-4xl font-bold hero-text-margin hero-text">گل های شمعدونی</h1>
                 <h2 class="text-2xl sm:text-3xl lg:text-5xl font-bold hero-text-margin hero-text mt-5">اقامتگاه بوم گردی در قلب طبیعت شمال</h2>
                 <p class="text-base sm:text-lg lg:text-xl hero-text-margin-last hero-text mt-5">تجربه‌ای متفاوت از آرامش و زیبایی‌های طبیعت شمال ایران</p>
@@ -536,5 +544,6 @@
         });
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93a686c1e8c8675c',t:'MTc0NjM0NjI3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93a6a01ba82eb053',t:'MTc0NjM0NzMxNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
