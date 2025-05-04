@@ -23,6 +23,28 @@
             background-image: url('./back.jpg');
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+        /* برای دستگاه‌های کوچک‌تر (موبایل) */
+        @media (max-width: 640px) {
+            .hero {
+                background-position: top center;
+                min-height: 80vh;
+            }
+        }
+        /* برای تبلت‌ها */
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .hero {
+                background-position: center;
+                min-height: 90vh;
+            }
+        }
+        /* بهینه‌سازی برای نمایشگرهای با رزولوشن بالا */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .hero {
+                background-image: url('./back-high-res.jpg');
+            }
         }
         /* استایل‌های تقویم شمسی */
         .jalali-datepicker {
@@ -169,29 +191,29 @@
         /* کاهش پدینگ و فاصله‌ها در موبایل */
         @media (max-width: 640px) {
             .booking-form {
-                padding: 1rem; /* p-4 */
+                padding: 1rem;
             }
             .hero-text-margin {
-                margin-bottom: 1rem; /* mb-4 */
+                margin-bottom: 1rem;
             }
             .hero-text-margin-last {
-                margin-bottom: 2rem; /* mb-8 */
+                margin-bottom: 2rem;
             }
             .hero-content {
-                margin-bottom: 1.5rem; /* mb-6 */
+                margin-bottom: 1.5rem;
             }
         }
         /* فاصله بیشتر در تبلت و دسکتاپ */
         @media (min-width: 640px) {
             .hero-text-margin-last {
-                margin-bottom: 3rem; /* mb-12 */
+                margin-bottom: 3rem;
             }
         }
     </style>
 </head>
 <body class="bg-gray-50">
     <!-- Hero Section -->
-    <section id="home" class="hero min-h-screen flex items-start justify-center text-white relative">
+    <section id="home" class="hero min-h-screen flex items-start justify-center text-white  text-white relative">
         <div class="absolute inset-0 bg-black opacity-70 z-10"></div>
         <div class="container mx-auto px-4 pt-0 relative z-20">
             <div class="text-center mt-28 hero-content">
@@ -274,7 +296,7 @@
                         <img src="./3.jpg" alt="تصویر گالری 3">
                     </div>
                     <div class="swiper-slide">
-                        <img src="./4.jpg" alt="تصویر گالری 4">
+                        <img src="./4.jpg" alt="تصویر گالری  dolphin4">
                     </div>
                     <div class="swiper-slide">
                         <img src="./5.jpg" alt="تصویر گالری 5">
@@ -340,8 +362,6 @@
                         <img src="./25.jpg" alt="تصویر گالری 25">
                     </div>
                 </div>
-                <!-- Add Pagination -->
-                <div class="swiper-pagination"></div>
                 <!-- Add Navigation -->
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
@@ -515,5 +535,6 @@
             }
         });
     </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93a686c1e8c8675c',t:'MTc0NjM0NjI3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
