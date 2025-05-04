@@ -24,7 +24,6 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            /* Adjusted padding for balanced spacing */
             padding: 3rem 0;
             min-height: auto;
             display: flex;
@@ -230,17 +229,17 @@
                 <p class="text-base sm:text-lg lg:text-xl hero-text-margin-last hero-text mt-5">تجربه‌ای متفاوت از آرامش و زیبایی‌های طبیعت شمال ایران</p>
                 
                 <!-- Booking Form -->
-                <div class="booking-form p-6 max-w-2xl mx-auto">
+                <div class="booking-form p-6 lg:p-8 max-w-2xl lg:max-w-3xl mx-auto">
                     <h2 class="text-2xl font-bold text-gray-800 mb-6">رزرو آنلاین اقامتگاه</h2>
                     
                     <div class="flex flex-col space-y-4">
                         <div class="flex flex-col md:flex-row md:justify-center gap-4">
                             <div class="w-full md:w-1/2">
-                                <label for="check-in" class="block text-gray-700 text-sm font-bold mb-2">تاریخ ورود</label>
+                                <label for="check-in" class="block text-gray-700 text-sm font-bold mb-2 text-right">تاریخ ورود</label>
                                 <input type="text" id="check-in" class="jalali-datepicker" data-jdp placeholder="انتخاب تاریخ">
                             </div>
                             <div class="w-full md:w-1/2">
-                                <label for="check-out" class="block text-gray-700 text-sm font-bold mb-2">تاریخ خروج</label>
+                                <label for="check-out" class="block text-gray-700 text-sm font-bold mb-2 text-right">تاریخ خروج</label>
                                 <input type="text" id="check-out" class="jalali-datepicker" data-jdp placeholder="انتخاب تاریخ">
                             </div>
                         </div>
@@ -453,7 +452,7 @@
                         
                         <div class="mb-4">
                             <label for="email" class="block text-gray-700 text-sm font-bold mb-2">ایمیل</label>
-                            <input type="email" id="email" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" required>
+                            <input type="text" id="email" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" required>
                         </div>
                         
                         <div class="mb-4">
