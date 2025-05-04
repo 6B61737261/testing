@@ -182,6 +182,7 @@
             background: rgba(255, 255, 255, 0.95);
             border-radius: 1rem;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100% !important;
         }
         .booking-form button {
             transition: all 0.3s ease;
@@ -198,7 +199,7 @@
         /* کاهش پدینگ و فاصله‌ها در موبایل */
         @media (max-width: 640px) {
             .booking-form {
-                padding: 1rem;
+                padding: 1rem !important;
             }
             .hero-text-margin {
                 margin-bottom: 1rem;
@@ -229,23 +230,25 @@
                 <p class="text-base sm:text-lg lg:text-xl hero-text-margin-last hero-text mt-5">تجربه‌ای متفاوت از آرامش و زیبایی‌های طبیعت شمال ایران</p>
                 
                 <!-- Booking Form -->
-                <div class="booking-form p-6 lg:p-8 max-w-2xl lg:max-w-3xl mx-auto">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-6">رزرو آنلاین اقامتگاه</h2>
-                    
-                    <div class="flex flex-col space-y-4">
-                        <div class="flex flex-col md:flex-row md:justify-center gap-4">
-                            <div class="w-full md:w-1/2">
-                                <label for="check-in" class="block text-gray-700 text-sm font-bold mb-2 text-right">تاریخ ورود</label>
-                                <input type="text" id="check-in" class="jalali-datepicker" data-jdp placeholder="انتخاب تاریخ">
+                <div class="container mx-auto px-4">
+                    <div class="booking-form p-4 sm:p-8 w-full">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">رزرو آنلاین اقامتگاه</h2>
+                        
+                        <div class="flex flex-col space-y-4">
+                            <div class="flex flex-col md:flex-row md:justify-center gap-4">
+                                <div class="w-full md:w-1/2">
+                                    <label for="check-in" class="block text-gray-700 text-sm font-bold mb-2 text-right">تاریخ ورود</label>
+                                    <input type="text" id="check-in" class="jalali-datepicker w-full" data-jdp placeholder="انتخاب تاریخ">
+                                </div>
+                                <div class="w-full md:w-1/2">
+                                    <label for="check-out" class="block text-gray-700 text-sm font-bold mb-2 text-right">تاریخ خروج</label>
+                                    <input type="text" id="check-out" class="jalali-datepicker w-full" data-jdp placeholder="انتخاب تاریخ">
+                                </div>
                             </div>
-                            <div class="w-full md:w-1/2">
-                                <label for="check-out" class="block text-gray-700 text-sm font-bold mb-2 text-right">تاریخ خروج</label>
-                                <input type="text" id="check-out" class="jalali-datepicker" data-jdp placeholder="انتخاب تاریخ">
-                            </div>
+                            <button id="search-btn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300" onclick="alert('بررسی امکان رزرو نمایشی است!')">
+                                بررسی امکان رزرو
+                            </button>
                         </div>
-                        <button id="search-btn" class="w-full md:w-1/2 mx-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300" onclick="alert('بررسی امکان رزرو نمایشی است!')">
-                            بررسی امکان رزرو
-                        </button>
                     </div>
                 </div>
             </div>
@@ -303,7 +306,7 @@
                         <img src="./3.jpg" alt="تصویر گالری 3">
                     </div>
                     <div class="swiper-slide">
-                        <img src="./4.jpg" alt="تصویر گالری  dolphin4">
+                        <img src="./4.jpg" alt="تصویر گالری dolphin4">
                     </div>
                     <div class="swiper-slide">
                         <img src="./5.jpg" alt="تصویر گالری 5">
@@ -544,5 +547,6 @@
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93a686c1e8c8675c',t:'MTc0NjM0NjI3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93a6a01ba82eb053',t:'MTc0NjM0NzMxNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93a6e82e88ffb062',t:'MTc0NjM1MDI2Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
