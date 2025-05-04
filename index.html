@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اقامتگاه گل های شمعدونی | رزرو آنلاین</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Vazir Font CDN -->
+    <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet">
+    <!-- Jalalidatepicker CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/jalalidatepicker/dist/jalalidatepicker.min.css">
+    <!-- Swiper CSS CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <style>
+        body {
+            font-family: 'Vazir', sans-serif !important;
+            margin: 0;
+        }
+        .hero {
+            background-image: url('/back.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        /* استایل‌های تقویم شمسی */
+        .jalali-datepicker {
+            font-family: 'Vazir', sans-serif !important;
+            border: 1px solid #d1d5db !important;
+            border-radius: 0.5rem !important;
+            padding: 0.75rem !important;
+            width: 100% !important;
+            color: gray;
+        }
+        .jalali-datepicker:focus {
+            outline: none !important;
+            border-color: #4f46e5 !important;
+            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.5) !important;
+        }
+        .datepicker-container {
+            z-index: 1000 !important;
+        }
+        /* استایل‌های اسلایدر */
+        .swiper {
+            width: 100%;
+            height: 600px;
+            position: relative;
+        }
+        .swiper-slide {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+        }
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #ffffff;
+            background: rgba(79, 70, 229, 0.8);
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            background: rgba(79, 70, 229, 1);
+        }
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 0;
+        }
+        .swiper-button-next::before,
+        .swiper-button-prev::before {
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 1.5rem;
+        }
+        .swiper-button-next::before {
+            content: '\f054';
+        }
+        .swiper-button-prev::before {
+            content: '\f053';
+        }
+        .swiper-pagination {
+            bottom: 10px !important;
+        }
+        .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            background: #ffffff;
+            opacity: 0.7;
+            margin: 0 6px;
+        }
+        .swiper-pagination-bullet-active {
+            background: #4f46e5;
+            opacity: 1;
+        }
+        @media (max-width: 640px) {
+            .swiper {
+                height: 350px;
+            }
+            .swiper-pagination {
+                bottom: 5px !important;
+            }
+        }
+        /* استایل‌های بخش درباره ما */
+        .about-image-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            max-height: 520px;
+            overflow: hidden;
+        }
+        .about-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        #about .flex {
+            align-items: stretch;
+        }
+        #about ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-family: 'Vazir', sans-serif;
+        }
+        #about ul li {
+            font-size: 1rem;
+            line-height: 1.5;
+            padding-right: 1rem;
+            font-family: 'Vazir', sans-serif;
+        }
+        @media (max-width: 768px) {
+            .about-image-container {
+                max-height: 320px;
+            }
+            #about ul li {
+                padding-right: 0.5rem;
+            }
+        }
+        /* استایل‌های فرم رزرو */
+        .booking-form {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .booking-form button {
+            transition: all 0.3s ease;
+        }
+        .booking-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
+        }
+        /* استایل‌های هیرو */
+        .hero-text {
+            white-space: nowrap;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        /* کاهش پدینگ و فاصله‌ها در موبایل */
+        @media (max-width: 640px) {
+            .booking-form {
+                padding: 1rem; /* p-4 */
+            }
+            .hero-text-margin {
+                margin-bottom: 1rem; /* mb-4 */
+            }
+            .hero-text-margin-last {
+                margin-bottom: 2rem; /* mb-8 */
+            }
+            .hero-content {
+                margin-bottom: 1.5rem; /* mb-6 */
+            }
+        }
+        /* فاصله بیشتر در تبلت و دسکتاپ */
+        @media (min-width: 640px) {
+            .hero-text-margin-last {
+                margin-bottom: 3rem; /* mb-12 */
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Hero Section -->
+    <section id="home" class="hero min-h-screen flex items-start justify-center text-white relative">
+        <div class="absolute inset-0 bg-black opacity-70 z-10"></div>
+        <div class="container mx-auto px-4 pt-0 relative z-20">
+            <div class="text-center mt-28 hero-content">
+                <h1 class="text-3xl sm:text-4xl lg:text-4xl font-bold hero-text-margin hero-text">گل های شمعدونی</h1>
+                <h2 class="text-2xl sm:text-3xl lg:text-5xl font-bold hero-text-margin hero-text mt-5">اقامتگاه بوم گردی در قلب طبیعت شمال</h2>
+                <p class="text-base sm:text-lg lg:text-xl hero-text-margin-last hero-text mt-5">تجربه‌ای متفاوت از آرامش و زیبایی‌های طبیعت شمال ایران</p>
+                
+                <!-- Booking Form -->
+                <div class="booking-form p-6 max-w-2xl mx-auto">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">رزرو آنلاین اقامتگاه</h2>
+                    
+                    <div class="flex flex-col space-y-4">
+                        <div class="flex flex-col md:flex-row md:justify-center gap-4">
+                            <div class="w-full md:w-1/2">
+                                <label for="check-in" class="block text-gray-700 text-sm font-bold mb-2">تاریخ ورود</label>
+                                <input type="text" id="check-in" class="jalali-datepicker" data-jdp placeholder="انتخاب تاریخ">
+                            </div>
+                            <div class="w-full md:w-1/2">
+                                <label for="check-out" class="block text-gray-700 text-sm font-bold mb-2">تاریخ خروج</label>
+                                <input type="text" id="check-out" class="jalali-datepicker" data-jdp placeholder="انتخاب تاریخ">
+                            </div>
+                        </div>
+                        <button id="search-btn" class="w-full md:w-1/2 mx-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300" onclick="alert('بررسی امکان رزرو نمایشی است!')">
+                            بررسی امکان رزرو
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">چرا اقامتگاه ما را انتخاب کنید؟</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md text-center">
+                    <div class="bg-indigo-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-tree text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">محیطی آرام و سرسبز</h3>
+                    <p class="text-gray-600">اقامتگاهی در دل طبیعت بکر شمال با هوای پاک و منظره‌ای چشم‌نواز</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md text-center">
+                    <div class="bg-indigo-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-utensils text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">صبحانه محلی</h3>
+                    <p class="text-gray-600">سرو صبحانه محلی شمالی با مواد اولیه تازه و ارگانیک</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md text-center">
+                    <div class="bg-indigo-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-wifi text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">امکانات مدرن</h3>
+                    <p class="text-gray-600">دارای تمام امکانات رفاهی شامل وای‌فای، پارکینگ، سرویس بهداشتی اختصاصی و...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">گالری تصاویر</h2>
+            
+            <!-- Swiper Slider -->
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="/1.jpg" alt="تصویر گالری 1">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/2.jpg" alt="تصویر گالری 2">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/3.jpg" alt="تصویر گالری 3">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/4.jpg" alt="تصویر گالری 4">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/5.jpg" alt="تصویر گالری 5">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/6.jpg" alt="تصویر گالری 6">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/7.jpg" alt="تصویر گالری 7">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/8.jpg" alt="تصویر گالری 8">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/9.jpg" alt="تصویر گالری 9">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/10.jpg" alt="تصویر گالری 10">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/11.jpg" alt="تصویر گالری 11">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/12.jpg" alt="تصویر گالری 12">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/13.jpg" alt="تصویر گالری 13">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/14.jpg" alt="تصویر گالری 14">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/15.jpg" alt="تصویر گالری 15">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/16.jpg" alt="تصویر گالری 16">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/17.jpg" alt="تصویر گالری 17">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/18.jpg" alt="تصویر گالری 18">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/19.jpg" alt="تصویر گالری 19">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/20.jpg" alt="تصویر گالری 20">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/21.jpg" alt="تصویر گالری 21">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/22.jpg" alt="تصویر گالری 22">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/23.jpg" alt="تصویر گالری 23">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/24.jpg" alt="تصویر گالری 24">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/25.jpg" alt="تصویر گالری 25">
+                    </div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Add Navigation -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:ml-8">
+                    <div class="about-image-container">
+                        <img src="/IMG-20250503-WA0021.jpg" alt="درباره اقامتگاه" class="w-full rounded-lg shadow-xl object-cover">
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6">درباره اقامتگاه ما</h2>
+                    <ul class="space-y-3 text-gray-600">
+                        <li>خانه سنتی ۲۵۰ متری دوطبقه شیک</li>
+                        <li>فضای کاملاً رویایی با ساختار سنتی چوبی-کاهگلی</li>
+                        <li>سه خوابه با تراس و تلار شیشه‌ای و تلار دلباز</li>
+                        <li>واقع در باغ بزرگ ۶۰۰۰ متری جنگلی، دنج و کوهپایه‌ای</li>
+                        <li>فول امکانات و تمیز با فضای بازی برای کودکان</li>
+                        <li>سرویس ایرانی و فرنگی در داخل و حیاط مجموعه</li>
+                        <li>دارای آتشکده سنتی برای دورهمی</li>
+                        <li>دارای آلاچیق درختی و جنگل اختصاصی</li>
+                        <li>دارای باغ دام و طیور و تجربه حس زیبای زندگی روستایی</li>
+                        <li>دارای رستوران مرکزی با غذاهای خوشمزه محلی</li>
+                        <li>واقع در بهترین لوکیشن نزدیک ماسوله، قلعه رودخان و ماسال</li>
+                        <li>ظرفیت مجموعه تا ۳۰ نفر</li>
+                        <li>دربست (با وجود مدیریت داخلی در سوئیت جداگانه‌ای در همین باغ)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">تماس با ما</h2>
+            
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/2">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold mb-4">اطلاعات تماس</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-indigo-600 text-xl mt-1 ml-3"></i>
+                                <div>
+                                    <h4 class="font-semibold">آدرس</h4>
+                                    <p class="text-gray-600">گیلان، فومن، جاده ماسوله، باغشهر ماکلوان، روستای میان رز، کوچه نصر، بومگردی گلهای شمعدونی</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone-alt text-indigo-600 text-xl ml-3"></i>
+                                <div>
+                                    <h4 class="font-semibold">تلفن</h4>
+                                    <p class="text-gray-600"></p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-indigo-600 text-xl ml-3"></i>
+                                <div>
+                                    <h4 class="font-semibold">ایمیل</h4>
+                                    <p class="text-gray-600"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b29b9c949db2958097979c8186938bdc919d9f">[email protected]</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <form id="contact-form" class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 text-sm font-bold mb-2">نام و نام خانوادگی</label>
+                            <input type="text" id="name" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" required>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 text-sm font-bold mb-2">ایمیل</label>
+                            <input type="email" id="email" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" required>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="message" class="block text-gray-700 text-sm font-bold mb-2">پیام شما</label>
+                            <textarea id="message" rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300">
+                            ارسال پیام
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Google Map -->
+            <div class="mt-12">
+                <h3 class="text-xl font-bold text-center text-gray-800 mb-6">موقعیت ما روی نقشه</h3>
+                <div class="w-full h-96 rounded-lg shadow-md overflow-hidden">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5660.784716262804!2d49.181654725354996!3d37.223782328459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x401e2daea65e383d%3A0x66f25a66b3eae96!2z2KfZgtin2YXYqtqv2KfZhyDYqNmI2YXar9ix2K_bjCDYqtmE2KfYsSDYtNmF2LnYr9mI2YbbjCDZh9in!5e0!3m2!1sen!2sde!4v1746282050908!5m2!1sen!2sde"
+                        width="100%"
+                        height="100%"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jalalidatepicker JS -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="https://unpkg.com/jalalidatepicker/dist/jalalidatepicker.min.js"></script>
+    <!-- Swiper JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <!-- Initialize Swiper -->
+    <script>
+        const swiper = new Swiper('.swiper', {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            speed: 800,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+        });
+    </script>
+    <!-- Custom JS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Initialize Jalalidatepicker
+            if (typeof jalaliDatepicker !== "undefined") {
+                jalaliDatepicker.startWatch({
+                    separator: '/',
+                    minDate: "today",
+                    showTodayButton: true,
+                    autoClose: true,
+                    zIndex: 1000,
+                    dateFormat: "YYYY/MM/DD",
+                    calendarType: "persian",
+                    inputClass: "jalali-datepicker",
+                });
+            }
+
+            // Contact form event
+            const contactForm = document.getElementById("contact-form");
+            if (contactForm) {
+                contactForm.addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    alert("پیام شما با موفقیت ارسال شد (نمایشی)!");
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
