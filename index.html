@@ -15,6 +15,9 @@
     <!-- Swiper CSS CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <style>
+        * {
+            box-sizing: border-box;
+        }
         body {
             font-family: 'Vazir', sans-serif !important;
             margin: 0;
@@ -31,7 +34,6 @@
             justify-content: center;
             position: relative;
         }
-        /* For mobile devices */
         @media (max-width: 640px) {
             .hero {
                 padding: 2rem 0;
@@ -39,7 +41,6 @@
                 min-height: auto;
             }
         }
-        /* For tablets */
         @media (min-width: 641px) and (max-width: 1024px) {
             .hero {
                 padding: 2.5rem 0;
@@ -47,13 +48,11 @@
                 min-height: auto;
             }
         }
-        /* For high-resolution displays */
         @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
             .hero {
                 background-image: url('./back.jpg');
             }
         }
-        /* استایل‌های تقویم شمسی */
         .jalali-datepicker {
             font-family: 'Vazir', sans-serif !important;
             border: 1px solid #d1d5db !important;
@@ -70,7 +69,6 @@
         .datepicker-container {
             z-index: 1000 !important;
         }
-        /* استایل‌های اسلایدر */
         .swiper {
             width: 100%;
             height: 600px;
@@ -125,7 +123,6 @@
         .swiper-button-prev::before {
             content: '\f054';
         }
-        /* Vertical bars for navigation */
         .swiper-button-next-bar,
         .swiper-button-prev-bar {
             position: absolute;
@@ -142,7 +139,6 @@
         .swiper-button-prev-bar {
             left: 0;
         }
-        /* Hover effect for desktop with gradient */
         .swiper-button-next-bar:hover,
         .swiper:has(.swiper-button-prev:hover) .swiper-button-next-bar {
             background: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
@@ -172,7 +168,6 @@
             .swiper-pagination {
                 bottom: 5px !important;
             }
-            /* Mobile styles for slider buttons and bars */
             .swiper-button-next,
             .swiper-button-prev {
                 background: none;
@@ -188,7 +183,6 @@
             .swiper-button-prev-bar {
                 width: 30px;
             }
-            /* Disable hover effect in mobile */
             .swiper-button-next-bar:hover,
             .swiper-button-prev-bar:hover,
             .swiper:has(.swiper-button-next:hover) .swiper-button-next-bar,
@@ -196,44 +190,6 @@
                 background: transparent;
             }
         }
-        /* استایل‌های بخش درباره ما */
-        .about-image-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            max-height: 520px;
-            overflow: hidden;
-        }
-        .about-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-        #about .flex {
-            align-items: stretch;
-        }
-        #about ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            font-family: 'Vazir', sans-serif;
-        }
-        #about ul li {
-            font-size: 1rem;
-            line-height: 1.5;
-            padding-right: 1rem;
-            font-family: 'Vazir', sans-serif;
-        }
-        @media (max-width: 768px) {
-            .about-image-container {
-                max-height: 320px;
-            }
-            #about ul li {
-                padding-right: 0.5rem;
-            }
-        }
-        /* استایل‌های فرم رزرو */
         .booking-form {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 1rem;
@@ -246,12 +202,10 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
         }
-        /* استایل‌های هیرو */
         .hero-text {
             white-space: nowrap;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
-        /* کاهش پدینگ و فاصله‌ها در موبایل */
         @media (max-width: 640px) {
             .booking-form {
                 padding: 1rem !important;
@@ -266,10 +220,82 @@
                 margin-bottom: 1.5rem;
             }
         }
-        /* فاصله بیشتر در تبلت و دسکتاپ */
         @media (min-width: 640px) {
             .hero-text-margin-last {
                 margin-bottom: 3rem;
+            }
+        }
+        /* About Section Styles */
+        #about {
+            padding: 4rem 0;
+            background: #ffffff;
+        }
+        #about h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            color: #1f2937;
+            margin-bottom: 2rem;
+        }
+        #about .flex {
+            display: flex;
+            align-items: stretch;
+            gap: 1rem;
+        }
+        #about .about-image-container {
+            flex: 1;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        #about .about-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+            display: block;
+            border-radius: 0.5rem;
+        }
+        #about .about-text-container {
+            flex: 1;
+            margin: 0;
+            padding: 0;
+        }
+        #about ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        #about ul li {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #4b5563;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            margin: 0;
+            margin-bottom: 1rem;
+        }
+        #about ul li::before {
+            content: '\f00c'; /* Font Awesome check icon */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #4f46e5; /* Indigo color */
+            font-size: 1rem;
+            margin-left: 1rem; /* Space between tick and text */
+            margin-right: 1rem;
+        }
+        #about ul li > * {
+            padding-left: 1rem; /* Extra space for text alignment */
+        }
+        @media (max-width: 767px) {
+            #about .flex {
+                flex-direction: column;
+            }
+            #about .about-image-container {
+                height: 300px;
+            }
+            #about .about-text-container {
+                margin-top: 1rem;
             }
         }
     </style>
@@ -435,18 +461,15 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">درباره اقامتگاه ما</h2>
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-8 md:mb-0 md:ml-8">
-                    <div class="about-image-container">
-                        <img src="./IMG-20250503-WA0021.jpg" alt="درباره اقامتگاه" class="w-full rounded-lg shadow-xl object-cover">
-                    </div>
+    <section id="about">
+        <div class="container px-4 mx-auto">
+            <h2>درباره اقامتگاه ما</h2>
+            <div class="flex flex-col md:flex-row items-stretch">
+                <div class="about-image-container">
+                    <img src="./IMG-20250503-WA0021.jpg" alt="درباره اقامتگاه">
                 </div>
-                
-                <div class="md:w-1/2">
-                    <ul class="space-y-3 text-gray-600">
+                <div class="about-text-container">
+                    <ul>
                         <li>خانه سنتی ۲۵۰ متری دوطبقه شیک</li>
                         <li>فضای کاملاً رویایی با ساختار سنتی چوبی-کاهگلی</li>
                         <li>سه خوابه با تراس و تلار شیشه‌ای و تلار دلباز</li>
@@ -518,7 +541,7 @@
                             <textarea id="message" rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" required></textarea>
                         </div>
                         
-                        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-land transition duration-300">
+                        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300">
                             ارسال پیام
                         </button>
                     </form>
@@ -606,7 +629,23 @@
                     contactForm.reset();
                 });
             }
+
+            // Match heights of about section
+            function matchHeights() {
+                const textContainer = document.querySelector('.about-text-container ul');
+                const imageContainer = document.querySelector('.about-image-container');
+                if (textContainer && imageContainer) {
+                    const textHeight = textContainer.offsetHeight;
+                    imageContainer.style.height = `${textHeight}px`;
+                }
+            }
+
+            // Run on load
+            matchHeights();
+
+            // Run on window resize
+            window.addEventListener('resize', matchHeights);
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93af0527ca304526',t:'MTc0NjQzNTMzOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93af4ad9c9717bcf',t:'MTc0NjQzODE5NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93afbf356abb4539',t:'MTc0NjQ0Mjk2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
