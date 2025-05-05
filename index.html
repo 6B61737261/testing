@@ -22,6 +22,49 @@
             font-family: 'Vazir', sans-serif !important;
             margin: 0;
         }
+        #main-nav {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    }
+    
+    @media (min-width: 1024px) {
+        #main-nav {
+            max-height: none !important;
+            opacity: 1 !important;
+        }
+    }
+    
+    .footer-col {
+        transition: transform 0.3s ease;
+    }
+    
+    .footer-col:hover {
+        transform: translateY(-5px);
+    }
+    
+    /* انیمیشن برای لینک‌های فوتر */
+    .footer-col a {
+        transition: all 0.3s ease;
+    }
+    
+    /* انیمیشن برای دکمه رزرو */
+    .book-now-btn {
+        animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+        }
+        70% {
+            box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+        }
+    }
         .hero {
             background-image: url('./back.jpg');
             background-size: cover;
@@ -301,6 +344,45 @@
     </style>
 </head>
 <body class="bg-gray-50">
+    <nav id="header" class="fixed w-full z-50 bg-gradient-to-r from-indigo-700 to-indigo-900 text-white shadow-lg transition-all duration-300 ease-in-out">
+        <div class="container mx-auto flex flex-wrap items-center justify-between py-2 px-4">
+            <!-- لوگو -->
+            <div class="flex items-center">
+                <a href="#home" class="flex items-center space-x-2 space-x-reverse">
+                    <i class="fas fa-seedling text-2xl text-indigo-200"></i>
+                    <span class="text-xl font-bold tracking-wide">گل‌های شمعدونی</span>
+                </a>
+            </div>
+    
+            <!-- دکمه همبرگر منو برای موبایل -->
+            <div class="block lg:hidden">
+                <button id="menu-toggle" class="flex items-center px-3 py-2 border rounded border-indigo-200 hover:border-white hover:bg-indigo-800 transition-all duration-200">
+                    <i class="fas fa-bars text-indigo-200 hover:text-white"></i>
+                </button>
+            </div>
+    
+            <!-- منوی اصلی -->
+            <div id="main-nav" class="hidden w-full lg:flex lg:items-center lg:w-auto lg:justify-end transform transition-transform duration-300 ease-in-out">
+                <ul class="flex flex-col lg:flex-row lg:space-x-6 lg:space-x-reverse mt-4 lg:mt-0">
+                    <li class="mb-2 lg:mb-0">
+                        <a href="#home" class="nav-link block py-2 px-4 rounded hover:bg-indigo-600 transition-all duration-200 ease-in-out transform hover:scale-105">خانه</a>
+                    </li>
+                    <li class="mb-2 lg:mb-0">
+                        <a href="#gallery" class="nav-link block py-2 px-4 rounded hover:bg-indigo-600 transition-all duration-200 ease-in-out transform hover:scale-105">گالری</a>
+                    </li>
+                    <li class="mb-2 lg:mb-0">
+                        <a href="#about" class="nav-link block py-2 px-4 rounded hover:bg-indigo-600 transition-all duration-200 ease-in-out transform hover:scale-105">درباره ما</a>
+                    </li>
+                    <li class="mb-2 lg:mb-0">
+                        <a href="#contact" class="nav-link block py-2 px-4 rounded hover:bg-indigo-600 transition-all duration-200 ease-in-out transform hover:scale-105">تماس با ما</a>
+                    </li>
+                    <!-- <li>
+                        <a href="#" class="book-now-btn block py-2 px-4 rounded bg-indigo-500 hover:bg-indigo-400 font-medium transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">رزرو آنلاین</a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
     <!-- Hero Section -->
     <section id="home" class="hero flex items-start justify-center text-white relative">
         <div class="absolute inset-0 bg-black opacity-70 z-10"></div>
@@ -565,6 +647,87 @@
             </div>
         </div>
     </section>
+    <footer class="bg-gradient-to-r from-indigo-900 to-indigo-700 text-white py-12">
+        <div class="container mx-auto px-4">
+            <!-- بخش اصلی فوتر -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+                <!-- ستون اول - درباره ما -->
+                <div class="footer-col transform transition-all hover:translate-y-[-5px] duration-300">
+                    <h3 class="text-xl font-bold mb-4 pb-2 border-b border-indigo-400">درباره گل‌های شمعدونی</h3>
+                    <p class="text-indigo-100 mb-4">اقامتگاه بوم گردی گل‌های شمعدونی، مکانی آرام و دنج در دل طبیعت زیبای شمال ایران که تجربه‌ای خاطره‌انگیز را برای شما رقم می‌زند.</p>
+                    <div class="flex space-x-4 space-x-reverse">
+                        <a href="#" class="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center hover:bg-white hover:text-indigo-600 transition-all duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center hover:bg-white hover:text-indigo-600 transition-all duration-300">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center hover:bg-white hover:text-indigo-600 transition-all duration-300">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+    
+                <!-- ستون دوم - دسترسی سریع -->
+                <div class="footer-col transform transition-all hover:translate-y-[-5px] duration-300">
+                    <h3 class="text-xl font-bold mb-4 pb-2 border-b border-indigo-400">دسترسی سریع</h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="#home" class="text-indigo-100 hover:text-white hover:mr-2 flex items-center transition-all duration-300">
+                                <i class="fas fa-chevron-left ml-2"></i>
+                                <span>صفحه اصلی</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#about" class="text-indigo-100 hover:text-white hover:mr-2 flex items-center transition-all duration-300">
+                                <i class="fas fa-chevron-left ml-2"></i>
+                                <span>درباره ما</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#gallery" class="text-indigo-100 hover:text-white hover:mr-2 flex items-center transition-all duration-300">
+                                <i class="fas fa-chevron-left ml-2"></i>
+                                <span>گالری تصاویر</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#contact" class="text-indigo-100 hover:text-white hover:mr-2 flex items-center transition-all duration-300">
+                                <i class="fas fa-chevron-left ml-2"></i>
+                                <span>تماس با ما</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+    
+                <!-- ستون سوم - اطلاعات تماس -->
+                <div class="footer-col transform transition-all hover:translate-y-[-5px] duration-300">
+                    <h3 class="text-xl font-bold mb-4 pb-2 border-b border-indigo-400">اطلاعات تماس</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 ml-3 text-indigo-300"></i>
+                            <span class="text-indigo-100">گیلان، فومن، جاده ماسوله، باغشهر ماکلوان، روستای میان رز</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt ml-3 text-indigo-300"></i>
+                            <span class="text-indigo-100">013-0000000</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope ml-3 text-indigo-300"></i>
+                            <span class="text-indigo-100">info@geranium-lodge.ir</span>
+                        </li>
+                    </ul>
+                </div>
+
+             <!-- خط جداکننده  -->
+            <div class="border-t border-indigo-700 mb-6"></div> 
+    
+            <!-- کپی رایت -->
+            <div class="text-center">
+                <p class="text-indigo-200">&copy; ۱۴۰۴ - تمامی حقوق برای اقامتگاه گل‌های شمعدونی محفوظ است.</p>
+                <p class="text-indigo-300 text-sm mt-2">طراحی و توسعه با <i class="fas fa-heart text-red-500 animate-pulse"></i> توسط تیم طراحی ما</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- Jalalidatepicker JS -->
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
@@ -645,6 +808,104 @@
 
             // Run on window resize
             window.addEventListener('resize', matchHeights);
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // منوی همبرگر
+            const menuToggle = document.getElementById('menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+    
+            menuToggle.addEventListener('click', function() {
+                if (mainNav.classList.contains('hidden')) {
+                    mainNav.classList.remove('hidden');
+                    mainNav.classList.add('block');
+                    // انیمیشن باز شدن منو
+                    setTimeout(() => {
+                        mainNav.style.maxHeight = '500px';
+                        mainNav.style.opacity = '1';
+                    }, 10);
+                } else {
+                    // انیمیشن بسته شدن منو
+                    mainNav.style.maxHeight = '0';
+                    mainNav.style.opacity = '0';
+                    setTimeout(() => {
+                        mainNav.classList.add('hidden');
+                        mainNav.classList.remove('block');
+                    }, 300);
+                }
+            });
+    
+            // تغییر استایل هدر هنگام اسکرول
+            const header = document.getElementById('header');
+            const scrollThreshold = 50;
+    
+            function handleScroll() {
+                if (window.scrollY > scrollThreshold) {
+                    header.classList.add('py-1');
+                    header.classList.add('bg-indigo-900');
+                    header.classList.remove('bg-gradient-to-r', 'from-indigo-700', 'to-indigo-900');
+                    header.classList.add('shadow-lg');
+                } else {
+                    header.classList.remove('py-1');
+                    header.classList.remove('bg-indigo-900');
+                    header.classList.add('bg-gradient-to-r', 'from-indigo-700', 'to-indigo-900');
+                    header.classList.remove('shadow-lg');
+                }
+            }
+    
+            window.addEventListener('scroll', handleScroll);
+            
+            // فعال کردن لینک منو بر اساس بخش فعلی
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            window.addEventListener('scroll', () => {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (window.scrollY >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('bg-indigo-600', 'font-medium');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('bg-indigo-600', 'font-medium');
+                    }
+                });
+            });
+            
+            // اضافه کردن اسکرول نرم به لینک‌های منو
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // بستن منوی موبایل در صورت باز بودن
+                    if (window.innerWidth < 1024 && mainNav.classList.contains('block')) {
+                        mainNav.style.maxHeight = '0';
+                        mainNav.style.opacity = '0';
+                        setTimeout(() => {
+                            mainNav.classList.add('hidden');
+                            mainNav.classList.remove('block');
+                        }, 300);
+                    }
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
         });
     </script>
 </body>
